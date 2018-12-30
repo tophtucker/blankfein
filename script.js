@@ -132,7 +132,7 @@ function renderSection(data, index) {
     .style("height", `${innerHeight}px`)
     .style(
       "background-image",
-      `url("../old2/index_files/${data.src2 || data.url.split("/").reverse()[0]}")`
+      `url("pics/index_files/${data.src2 || data.url.split("/").reverse()[0]}")`
     )
   sel.append("h2")
     .style("font-size", `${fontSize}px`)
