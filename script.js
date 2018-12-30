@@ -124,7 +124,7 @@ const section = article
   .style("z-index", (d, i) => photos.length - i)
   .each(renderSection)
 
-d3.timer(handleScroll)
+d3.timer(handleScroll2)
 
 function renderSection(data, index) {
   const sel = d3.select(this)
@@ -142,6 +142,15 @@ function renderSection(data, index) {
 
 function handleScroll() {
   const y = doc.scrollTop / (doc.scrollHeight - innerHeight) * (photos.length - 1)
+  section
+    .style("visibility", (d, i) => i === Math.floor(y) || i === Math.floor(y) + 1 ? "visible" : "hidden")
+    .filter((d, i) => i === Math.floor(y) || i === Math.floor(y) + 1)
+    .style("clip-path", (d, i) => i === 0 ? `inset(0 0 ${y % 1 * 100}% 0)` : "unset")
+}
+
+function handleScroll2(t) {
+  // const y = doc.scrollTop / (doc.scrollHeight - innerHeight) * (photos.length - 1)
+  const y = Math.max(0, t - 2000) / 500
   section
     .style("visibility", (d, i) => i === Math.floor(y) || i === Math.floor(y) + 1 ? "visible" : "hidden")
     .filter((d, i) => i === Math.floor(y) || i === Math.floor(y) + 1)
