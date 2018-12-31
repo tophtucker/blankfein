@@ -35,7 +35,7 @@ var photos = [
   {"bad": true, "result":34,"url":"http://www.businessinsurance.com/apps/pbcsi.dll/storyimage/CB/20130318/NEWS07/130319840/AR/0/lloyd-blankfein-goldman-sachs.jpg","score":0.4},
   {"bad": true, "result":35,"url":"http://i.huffpost.com/gen/1744076/images/o-LLOYD-BLANKFEIN-facebook.jpg","score":0.3, "src2": "o-LLOYD-BLANKFEIN-facebook(5).jpg"},
   {"position": "50% 15%", "result":36,"url":"http://i.huffpost.com/gen/1350608/thumbs/o-LLOYD-BLANKFEIN-facebook.jpg","score":0.6, "src2": "o-LLOYD-BLANKFEIN-facebook(1).jpg"},
-  {"position": "85% 30%", "result":37,"url":"http://cdn4.benzinga.com/files/imagecache/1024x768xUP/images/story/2012/98706742_0.jpg","score":0.1},
+  {"position": "85% 30%", "result":37,"url":"http://cdn4.benzinga.com/files/imagecache/1024x768xUP/images/story/2012/98706742_0.jpg","score":0.09},
   {"position": "58% 50%", "result":38,"url":"http://www.dailyshame.co.uk/wp-content/uploads/2012/08/98706597.jpg","score":0.4},
   {"result":39,"url":"https://thenypost.files.wordpress.com/2013/09/goldman.jpg","score":0.4, "src2": "goldman(1).jpg"},
   {"result":40,"url":"http://i.huffpost.com/gen/1663307/thumbs/o-LLOYD-BLANKFEIN-facebook.jpg","score":0.8},
@@ -126,7 +126,7 @@ const section = article
 
 if(innerWidth > 430) d3.timer(handleScroll)
 
-d3.select("a").on("click", () => d3.select(".about").style("display", "flex"))
+d3.select(".about-link").on("click", () => d3.select(".about").style("display", "flex"))
 d3.select(".about").on("click", () => d3.select(".about").style("display", "none"))
 
 function renderSection(data, index) {
@@ -142,7 +142,11 @@ function renderSection(data, index) {
     sel.style("background-position", data.position)
   }
 
-  sel.append("h2")
+  sel.append("a")
+    .attr("class", "h2")
+    .attr("href", data.url)
+    .attr("target", "_blank")
+    .attr("rel", "noopener noreferrer")
     .style("font-size", `${fontSize}px`)
     .style("top", `${scale(data.score)}px`)
     .text(f(data.score))
