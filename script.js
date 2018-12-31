@@ -106,7 +106,7 @@ photos = photos
   .filter(d => !d.bad)
   .sort(function(a, b) { return b.score - a.score; })
 
-const fontSize = 60;
+const fontSize = 64;
 const f = d => Math.round(d * 10)
 const scale = d3.scaleLinear()
   .range([innerHeight, 16])
@@ -124,7 +124,10 @@ const section = article
   .style("z-index", (d, i) => photos.length - i)
   .each(renderSection)
 
-d3.timer(handleScroll)
+if(innerWidth > 430) d3.timer(handleScroll)
+
+d3.select("a").on("click", () => d3.select(".about").style("display", "flex"))
+d3.select(".about").on("click", () => d3.select(".about").style("display", "none"))
 
 function renderSection(data, index) {
   const sel = d3.select(this)
