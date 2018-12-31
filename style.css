@@ -58,12 +58,6 @@ section {
   background-position: 50% 50%;
 }
 
-@media (max-width: 430px) {
-  section {
-    position: relative;
-  }
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -97,4 +91,17 @@ a {
 p {
   max-width: 20em;
   margin: auto;
+}
+
+@media (max-width: 430px) {
+  section {
+    position: relative;
+  }
+  h1 {
+    font-size: 48px;
+  }
+  .about {
+    padding: 1rem;
+    font-size: 2rem;
+  }
 }
