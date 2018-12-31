@@ -124,7 +124,7 @@ const section = article
   .style("z-index", (d, i) => photos.length - i)
   .each(renderSection)
 
-if(innerWidth > 430) d3.timer(handleScroll)
+if(innerWidth > 430) d3.timer(timerScroll)
 
 d3.select(".about-link").on("click", () => d3.select(".about").style("display", "flex"))
 d3.select(".about").on("click", () => d3.select(".about").style("display", "none"))
@@ -162,7 +162,7 @@ function handleScroll() {
 
 // just for screen recording purposes
 function timerScroll(t) {
-  const y = Math.max(0, t - 2000) / 500
+  const y = Math.max(0, t - 2000) / 1000
   section
     .style("visibility", (d, i) => i === Math.floor(y) || i === Math.floor(y) + 1 ? "visible" : "hidden")
     .filter((d, i) => i === Math.floor(y) || i === Math.floor(y) + 1)
