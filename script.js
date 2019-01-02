@@ -102,6 +102,8 @@ var photos = [
   {"result":101,"url":"http://images.lesechos.sdv.fr/archives/2010/LesEchos/20598/ECH20598050_1.jpg","score":0.8}
 ]
 
+// https://amp.businessinsider.com/images/58f66e93f40dae9b008b5476-750-500.jpg from https://www.businessinsider.com/goldman-sachs-ceo-lloyd-blankfein-just-sent-a-memo-to-staff-2018-7
+
 photos = photos
   .filter(d => !d.bad)
   .sort(function(a, b) { return b.score - a.score; })
